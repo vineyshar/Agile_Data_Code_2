@@ -1,6 +1,6 @@
 python-dateutil>=2.6.0
 Werkzeug>=0.14,<1.0.0
-jinja2<2.11.0,>=2.10.1
+jinja2>=2.11.3
 requests<3,>=2.20.0
 click<8,>=6.7
 marshmallow<2.20,>=2.18.0
