@@ -1,7 +1,7 @@
 # Setup an environment for running this book's examples
 
 FROM ubuntu
-MAINTAINER Russell Jurney, russell.jurney@gmail.com
+LABEL author="Russell Jurney, russell.jurney@gmail.com"
 
 WORKDIR /root
 
