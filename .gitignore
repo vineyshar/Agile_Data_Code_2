@@ -32,3 +32,6 @@ cassandra
 janusgraph
 deep
 ch05/web/static/images/
+.local
+.ipython
+.jupyter
