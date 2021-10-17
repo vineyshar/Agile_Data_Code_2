@@ -1,0 +1,89 @@
+version: "3.8"
+services:
+
+    agile:
+        container_name: agile
+        hostname: agile
+        labels:
+            description: Agile Data Science 2.0
+            name: agile
+        tty: true
+        image: jupyter/pyspark-notebook:latest
+        environment:
+            JUPYTER_ENABLE_LAB: yes
+        depends_on:
+            - elastic
+            - mongo
+            - mongo-express
+        ports:
+            - "8888:8888"
+        volumes:
+            - ./:/home/jovyan
+        networks:
+            - agile_net
+
+    elastic:
+        container_name: elastic
+        hostname: elastic
+        labels:
+            description: Agile Data Science 2.0 Elastic
+            name: elastic
+        tty: True
+        image: elasticsearch:7.14.2
+        environment:
+            discovery.type: single-node
+        ulimits:
+            memlock:
+                soft: -1
+                hard: -1
+        ports:
+            - "9200:9200"
+            - "9300:9300"
+        volumes:
+            - elastic_data:/usr/share/elasticsearch/data
+        networks:
+            - agile_net
+
+    mongo:
+        container_name: mongo
+        hostname: mongo
+        labels:
+            description: Agile Data Science 2.0 MongoDB
+            name: mongo
+        image: mongo
+        restart: always
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: agile
+        volumes:
+            - mongo_data:/data/db
+        networks:
+            - agile_net
+
+    mongo-express:
+        container_name: mongo-express
+        hostname: mongo-express
+        labels:
+            description: Agile Data Science 2.0 Mongo Express
+            name: mongo-express
+        image: mongo-express
+        depends_on:
+            - mongo
+        restart: always
+        ports:
+            - 8081:8081
+        environment:
+            ME_CONFIG_MONGODB_ADMINUSERNAME: root
+            ME_CONFIG_MONGODB_ADMINPASSWORD: agile
+            ME_CONFIG_MONGODB_URL: mongodb://root:agile@mongo:27017/
+        networks:
+            - agile_net
+
+volumes:
+  elastic_data:
+  mongo_data:
+
+networks:
+    agile_net:
+        name: agile_net
+        driver: bridge
