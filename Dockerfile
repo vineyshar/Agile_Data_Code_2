@@ -18,3 +18,6 @@ RUN apt-get update --yes && \
     sudo apt-get install -y mongodb-mongosh mongodb-org-tools && \
     echo "mongodb-mongosh hold" | sudo dpkg --set-selections && \
     echo "mongodb-org-tools hold" | sudo dpkg --set-selections
+
+# Instsall requirements.txt
+RUN pip install -r requirements.txt
