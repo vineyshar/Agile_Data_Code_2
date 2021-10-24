@@ -1,14 +1,16 @@
-# Agile_Data_Code_2
+# Agile Data Science 2.0 (O'Reilly, 2017)
 
-Code for [Agile Data Science 2.0](http://shop.oreilly.com/product/0636920051619.do), O'Reilly 2017. Now available at the [O'Reilly Store](http://shop.oreilly.com/product/0636920051619.do), on [Amazon](https://www.amazon.com/Agile-Data-Science-2-0-Applications/dp/1491960116) (in Paperback and Kindle) and on [O'Reilly Safari](https://www.safaribooksonline.com/library/view/agile-data-science/9781491960103/). Also available anywhere technical books are sold!
+This repository contains the updated sourcec code for [Agile Data Science 2.0](http://shop.oreilly.com/product/0636920051619.do), O'Reilly 2017. Now available at the [O'Reilly Store](http://shop.oreilly.com/product/0636920051619.do), on [Amazon](https://www.amazon.com/Agile-Data-Science-2-0-Applications/dp/1491960116) (in Paperback and Kindle) and on [O'Reilly Safari](https://www.safaribooksonline.com/library/view/agile-data-science/9781491960103/). Also available anywhere technical books are sold!
 
-Have problems? Please file an issue!
+It was last updated to a fully running version in late October, 2021. You should refer to the Jupyter Notebooks in this repository rather than the book's source code, which is badly outdated and will no longer work for you.
 
-## Data Syndrome
+Have problems? Please [file an issue](https://github.com/rjurney/Agile_Data_Code_2/issues)!
 
-Like my work? I am Principal Consultant at [Data Syndrome](http://datasyndrome.com), a consultancy offering assistance and training with building full-stack analytics products, applications and systems. Find us on the web at [datasyndrome.com](http://datasyndrome.com).
+## Deep Discovery
 
-![Data Syndrome Logo](images/data_syndrome_logo.png)
+Like my work? Want to work for me? I am Cofounder / CTO of Deep Discovery [deepdiscovery.ai](https://deepdiscovery.ai), an AI startup founded to fight financial crime and empower journalists to nail crooked politicians to the wall by analyzing the business networks surrounding corruption.
+
+![Deep Discovery Logo](images/DeepDiscoveryTechnicalLogo.png)
 
 ## Installation and Execution
 
@@ -36,9 +38,9 @@ To manage the `mongo` image with Mongo Express, visit: [http://localhost:8081](h
 
 Once the server comes up, download the data and you are ready to go. First open a shell in Jupyter Lab. The working directory corresponds to this folder.
 
-Now download the data.
+Now download the data:
 
-```
+```bash
 ./download.sh
 ```
 
