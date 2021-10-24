@@ -36,3 +36,7 @@ ch05/web/static/images/
 .ipython
 .jupyter
 .ivy2
+.bash_history
+.dbshell
+.mongodb
+.mongorc.js
