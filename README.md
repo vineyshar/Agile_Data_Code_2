@@ -10,9 +10,27 @@ Like my work? I am Principal Consultant at [Data Syndrome](http://datasyndrome.c
 
 ![Data Syndrome Logo](images/data_syndrome_logo.png)
 
-## Installation
+## Installation and Execution
 
-There is now only ONE version of the install: Docker via the [docker-compose.yml](docker-compose.yml) file coming in a couple of days. It is MUCH EASIER than the old methods.
+There is now only ONE version of the install: Docker via the [docker-compose.yml](docker-compose.yml). It is MUCH EASIER than the old methods.
+
+To build the `agile` Docker image, run this:
+
+```bash
+docker-compose build agile
+```
+
+To run the `agile` Docker image, defined by the [`docker-compose.yml`](docker-compose.yml) and [`Dockerfile`](Dockerfile), run:
+
+```bash
+docker-compose up -d
+```
+
+Now visit: [http://localhost:8888](http://localhost:8888)
+
+## Other Images
+
+To manage the `mongo` image with Mongo Express, visit: [http://localhost:8081](http://localhost:8081)
 
 ## Downloading Data
 
