@@ -9,8 +9,15 @@ services:
             name: agile
         tty: true
         image: jupyter/pyspark-notebook:spark-3.2.0
+        build:
+            context: .
+            dockerfile: Dockerfile
+            args:
+                buildno: 1
+        user: root
         environment:
             JUPYTER_ENABLE_LAB: "yes"
+            GRANT_SUDO: "yes"
         depends_on:
             - elastic
             - mongo
@@ -19,6 +26,7 @@ services:
             - "8888:8888"
         volumes:
             - ./:/home/jovyan
+            - agile_data:/home/jovyan/data
         networks:
             - agile_net
 
@@ -55,6 +63,8 @@ services:
         environment:
             MONGO_INITDB_ROOT_USERNAME: root
             MONGO_INITDB_ROOT_PASSWORD: agile
+        ports:
+            - "27017:27017"
         volumes:
             - mongo_data:/data/db
         networks:
@@ -80,8 +90,9 @@ services:
             - agile_net
 
 volumes:
-  elastic_data:
-  mongo_data:
+    agile_data:
+    elastic_data:
+    mongo_data:
 
 networks:
     agile_net:
