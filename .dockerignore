@@ -12,3 +12,10 @@ zeppelin
 elasticsearch-hadoop
 models
 lib
+.ivy2
+.bash_history
+.dbshell
+.mongodb
+.mongorc.js
+.cache
+logs
