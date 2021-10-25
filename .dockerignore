@@ -18,3 +18,4 @@ lib
 .mongodb
 .mongorc.js
 .cache
+logs
