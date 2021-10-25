@@ -9,6 +9,7 @@ services:
             name: agile
         tty: true
         image: jupyter/pyspark-notebook:spark-3.2.0
+        restart: on-failure
         build:
             context: .
             dockerfile: Dockerfile
@@ -38,8 +39,10 @@ services:
             name: elastic
         tty: True
         image: elasticsearch:7.14.2
+        restart: on-failure
         environment:
             discovery.type: single-node
+            node.name: "elastic"
         ulimits:
             memlock:
                 soft: -1
@@ -86,50 +89,56 @@ services:
         networks:
             - agile_net
 
-    postgres:
-        image: postgres
-        environment:
-            - POSTGRES_USER=airflow
-            - POSTGRES_PASSWORD=airflow
-            - POSTGRES_DB=airflow
+    # postgres:
+    #     image: postgres
+    #     environment:
+    #         - POSTGRES_USER=airflow
+    #         - POSTGRES_PASSWORD=airflow
+    #         - POSTGRES_DB=airflow
+    #     networks:
+    #         - airflow_net
 
-    scheduler:
-        container_name: scheduler
-        hostname: scheduler
-        labels:
-            description: Agile Data Science 2.0 Airflow 1.10.15 Scheduler
-            name: scheduler
-        image: apache/airflow:1.10.15
-        command: scheduler
-        restart: on-failure
-        depends_on:
-            - postgres
-        env_file:
-            - airflow.env
-        volumes:
-            - ./dags:/opt/airflow/dags
-            - ./logs:/opt/airflow/logs
+    # scheduler:
+    #     container_name: scheduler
+    #     hostname: scheduler
+    #     labels:
+    #         description: Agile Data Science 2.0 Airflow 1.10.15 Scheduler
+    #         name: scheduler
+    #     image: apache/airflow:1.10.15
+    #     command: init && scheduler
+    #     restart: on-failure
+    #     depends_on:
+    #         - postgres
+    #     env_file:
+    #         - airflow.env
+    #     volumes:
+    #         - ./dags:/opt/airflow/dags
+    #         - ./logs:/opt/airflow/logs
+    #     networks:
+    #         - airflow_net
 
-    webserver:
-        container_name: webserver
-        hostname: webserver
-        labels:
-            description: Agile Data Science 2.0 Airflow 1.10.15 Webserver
-            name: webserver
-        image: apache/airflow:1.10.15
-        command: webserver
-        restart: on-failure
-        depends_on:
-            - postgres
-            - scheduler
-        env_file:
-            - airflow.env
-        volumes:
-            - ./dags:/opt/airflow/dags
-            - ./logs:/opt/airflow/logs
-            - ./scripts:/opt/airflow/scripts
-        ports:
-            - "8080:8080"
+    # webserver:
+    #     container_name: webserver
+    #     hostname: webserver
+    #     labels:
+    #         description: Agile Data Science 2.0 Airflow 1.10.15 Webserver
+    #         name: webserver
+    #     image: apache/airflow:1.10.15
+    #     command: webserver
+    #     restart: on-failure
+    #     depends_on:
+    #         - postgres
+    #         - scheduler
+    #     env_file:
+    #         - airflow.env
+    #     volumes:
+    #         - ./dags:/opt/airflow/dags
+    #         - ./logs:/opt/airflow/logs
+    #         - ./scripts:/opt/airflow/scripts
+    #     ports:
+    #         - "8080:8080"
+    #     networks:
+    #         - airflow_net
 
 volumes:
     agile_data:
@@ -139,4 +148,8 @@ volumes:
 networks:
     agile_net:
         name: agile_net
+        driver: bridge
+    
+    airflow_net:
+        name: airflow_net
         driver: bridge
