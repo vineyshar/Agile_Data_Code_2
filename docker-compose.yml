@@ -89,6 +89,51 @@ services:
         networks:
             - agile_net
 
+    postgres:
+        image: postgres
+        environment:
+            - POSTGRES_USER=airflow
+            - POSTGRES_PASSWORD=airflow
+            - POSTGRES_DB=airflow
+
+    scheduler:
+        container_name: scheduler
+        hostname: scheduler
+        labels:
+            description: Agile Data Science 2.0 Airflow 1.10.15 Scheduler
+            name: scheduler
+        image: apache/airflow:1.10.15
+        command: scheduler
+        restart: on-failure
+        depends_on:
+            - postgres
+        env_file:
+            - airflow.env
+        volumes:
+            - ./dags:/opt/airflow/dags
+            - ./logs:/opt/airflow/logs
+
+    webserver:
+        container_name: webserver
+        hostname: webserver
+        labels:
+            description: Agile Data Science 2.0 Airflow 1.10.15 Webserver
+            name: webserver
+        image: apache/airflow:1.10.15
+        command: webserver
+        restart: on-failure
+        depends_on:
+            - postgres
+            - scheduler
+        env_file:
+            - airflow.env
+        volumes:
+            - ./dags:/opt/airflow/dags
+            - ./logs:/opt/airflow/logs
+            - ./scripts:/opt/airflow/scripts
+        ports:
+            - "8080:8080"
+
 volumes:
     agile_data:
     elastic_data:
