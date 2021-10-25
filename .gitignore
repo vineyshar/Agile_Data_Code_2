@@ -40,3 +40,4 @@ ch05/web/static/images/
 .dbshell
 .mongodb
 .mongorc.js
+.cache
