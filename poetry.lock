@@ -59,6 +59,18 @@ tests = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)"
 tests_no_zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "mypy", "pytest-mypy-plugins"]
 
 [[package]]
+name = "avro-python3"
+version = "1.10.0"
+description = "Avro is a serialization and RPC framework."
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[package.extras]
+snappy = ["python-snappy"]
+zstandard = ["zstandard"]
+
+[[package]]
 name = "backcall"
 version = "0.2.0"
 description = "Specifications for callback functions passed in to an API"
@@ -152,6 +164,14 @@ category = "main"
 optional = false
 python-versions = "*"
 
+[package.dependencies]
+avro-python3 = {version = "1.10.0", optional = true, markers = "python_version > \"3.0\" and extra == \"avro\""}
+fastavro = {version = ">=1.0", optional = true, markers = "python_version > \"3.0\" and extra == \"avro\""}
+jsonschema = {version = "*", optional = true, markers = "extra == \"json\""}
+protobuf = {version = "*", optional = true, markers = "extra == \"protobuf\""}
+pyrsistent = {version = "*", optional = true, markers = "python_version > \"3.0\" and extra == \"json\""}
+requests = {version = "*", optional = true, markers = "extra == \"avro\""}
+
 [package.extras]
 avro = ["requests", "fastavro (>=0.23.0,<1.0)", "avro (==1.10.0)", "fastavro (>=1.0)", "avro-python3 (==1.10.0)"]
 dev = ["pytest-timeout", "flake8", "requests", "pytest (==4.6.4)", "fastavro (>=0.23.0,<1.0)", "avro (==1.10.0)", "fastavro (>=1.0)", "avro-python3 (==1.10.0)", "pytest"]
@@ -239,6 +259,20 @@ description = "Discover and load entry points from installed packages."
 category = "main"
 optional = false
 python-versions = ">=2.7"
+
+[[package]]
+name = "fastavro"
+version = "1.4.6"
+description = "Fast read/write of AVRO files"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+codecs = ["python-snappy", "zstandard", "lz4"]
+lz4 = ["lz4"]
+snappy = ["python-snappy"]
+zstandard = ["zstandard"]
 
 [[package]]
 name = "filelock"
@@ -787,6 +821,14 @@ python-versions = ">=3.6.2"
 wcwidth = "*"
 
 [[package]]
+name = "protobuf"
+version = "3.19.0"
+description = "Protocol Buffers"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[[package]]
 name = "ptyprocess"
 version = "0.7.0"
 description = "Run a subprocess in a pseudo terminal"
@@ -1268,7 +1310,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7,<3.10"
-content-hash = "033329e2c7d482239cccd5f616157f5fd937d41357e81e3d9b68abf3f457bea2"
+content-hash = "0f2567ed3d7534cfba9fff919a3206e15d03ad42f82fd857bb1491ad98fcee55"
 
 [metadata.files]
 appnope = [
@@ -1299,6 +1341,9 @@ async-generator = [
 attrs = [
     {file = "attrs-21.2.0-py2.py3-none-any.whl", hash = "sha256:149e90d6d8ac20db7a955ad60cf0e6881a3f20d37096140088356da6c716b0b1"},
     {file = "attrs-21.2.0.tar.gz", hash = "sha256:ef6aaac3ca6cd92904cdd0d83f629a15f18053ec84e6432106f7a4d04ae4f5fb"},
+]
+avro-python3 = [
+    {file = "avro-python3-1.10.0.tar.gz", hash = "sha256:a455c215540b1fceb1823e2a918e94959b54cb363307c97869aa46b5b55bde05"},
 ]
 backcall = [
     {file = "backcall-0.2.0-py2.py3-none-any.whl", hash = "sha256:fbbce6a29f263178a1f7915c1940bde0ec2b2a967566fe1c65c1dfb7422bd255"},
@@ -1466,6 +1511,25 @@ elasticsearch7 = [
 entrypoints = [
     {file = "entrypoints-0.3-py2.py3-none-any.whl", hash = "sha256:589f874b313739ad35be6e0cd7efde2a4e9b6fea91edcc34e58ecbb8dbe56d19"},
     {file = "entrypoints-0.3.tar.gz", hash = "sha256:c70dd71abe5a8c85e55e12c19bd91ccfeec11a6e99044204511f9ed547d48451"},
+]
+fastavro = [
+    {file = "fastavro-1.4.6-cp36-cp36m-macosx_10_14_x86_64.whl", hash = "sha256:480454ca2702424aee9181767b6daeca17fd99cc77b0de70dbecced0c12cbed9"},
+    {file = "fastavro-1.4.6-cp36-cp36m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:3707a72d766790a317e89f050977f63febc329c37161f10916a2fccf75d54a63"},
+    {file = "fastavro-1.4.6-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:50398de4901fce1106ffbcc82e65c6779ae2c60e49e3f418b7ef6c54ead49487"},
+    {file = "fastavro-1.4.6-cp36-cp36m-win_amd64.whl", hash = "sha256:7aa5fcd2956d0303161274973a7fe91a6e371fb0211187e00536762e0ab499fe"},
+    {file = "fastavro-1.4.6-cp37-cp37m-macosx_10_14_x86_64.whl", hash = "sha256:aacdd87144aa3b15a061c0135c496c2ce59484ea469436d846f0662aec943e99"},
+    {file = "fastavro-1.4.6-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:d1cf2ef77e458b1ab52632dd8fbb888ae5fc59b459ff8c2d7c1879c9b3f419a3"},
+    {file = "fastavro-1.4.6-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:7b6cc98ff091ed5cd461439cde8e6987a86d39f468ac2d82878536f66a2d2099"},
+    {file = "fastavro-1.4.6-cp37-cp37m-win_amd64.whl", hash = "sha256:2574fa92b8f85fcba92d7241c56156c14b362fdb80b0852841d4d9884708da21"},
+    {file = "fastavro-1.4.6-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:8050ea31f71ce8c86048f20ce1b1ae317d15696d1b1b206b081ab4d86b8c8a42"},
+    {file = "fastavro-1.4.6-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:b4aef13da04503416b42273b2fee338a098f544754e0432b1b909416b1a3d758"},
+    {file = "fastavro-1.4.6-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:f2b89fa5fc17acccf608e49cf0ab1edec217ca08783c39b627a6eb29acd5d0c8"},
+    {file = "fastavro-1.4.6-cp38-cp38-win_amd64.whl", hash = "sha256:1dc97f23c7aa18d0f19766abd06f1e8deb00f238f6ba3eb4eee39c613b031581"},
+    {file = "fastavro-1.4.6-cp39-cp39-macosx_10_14_x86_64.whl", hash = "sha256:de360af285b0083a9c8aa19c778513c08473a9c947c6d086cde068eee3119d93"},
+    {file = "fastavro-1.4.6-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:f3da4edf62e2d4ab406998294668aa375a1777342ef05a8287a40fa3aeb1d4d6"},
+    {file = "fastavro-1.4.6-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:bd0391d8a3b7d7518c47abbab8eb678138d890a0701c6db9ce050b71b5201a51"},
+    {file = "fastavro-1.4.6-cp39-cp39-win_amd64.whl", hash = "sha256:b03674d80173151ad4a9048f8c719bac809b9cb7a7c3d505643f0e5087551147"},
+    {file = "fastavro-1.4.6.tar.gz", hash = "sha256:208c5738b91dd0e1a877228133642f2a8229979cca6923dd78dc00d9e9afadda"},
 ]
 filelock = [
     {file = "filelock-3.3.1-py3-none-any.whl", hash = "sha256:2b5eb3589e7fdda14599e7eb1a50e09b4cc14f34ed98b8ba56d33bfaafcbef2f"},
@@ -1835,6 +1899,32 @@ prometheus-client = [
 prompt-toolkit = [
     {file = "prompt_toolkit-3.0.21-py3-none-any.whl", hash = "sha256:62b3d3ea5a3ccee94dc1aac018279cf64866a76837156ebe159b981c42dd20a8"},
     {file = "prompt_toolkit-3.0.21.tar.gz", hash = "sha256:27f13ff4e4850fe8f860b77414c7880f67c6158076a7b099062cc8570f1562e5"},
+]
+protobuf = [
+    {file = "protobuf-3.19.0-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:01a0645ef3acddfbc90237e1cdfae1086130fc7cb480b5874656193afd657083"},
+    {file = "protobuf-3.19.0-cp310-cp310-manylinux2014_aarch64.whl", hash = "sha256:d3861c9721a90ba83ee0936a9cfcc4fa1c4b4144ac9658fb6f6343b38558e9b4"},
+    {file = "protobuf-3.19.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:b64be5d7270cf5e76375bac049846e8a9543a2d4368b69afe78ab725380a7487"},
+    {file = "protobuf-3.19.0-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:2f6046b9e2feee0dce994493186e8715b4392ed5f50f356280ad9c2f9f93080a"},
+    {file = "protobuf-3.19.0-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:ac2f8ec942d414609aba0331952ae12bb823e8f424bbb6b8c422f1cef32dc842"},
+    {file = "protobuf-3.19.0-cp36-cp36m-win32.whl", hash = "sha256:3fea09aa04ef2f8b01fcc9bb87f19509934f8a35d177c865b8f9ee5c32b60c1b"},
+    {file = "protobuf-3.19.0-cp36-cp36m-win_amd64.whl", hash = "sha256:d1f4277d321f60456845ca9b882c4845736f1f5c1c69eb778eba22a97977d8af"},
+    {file = "protobuf-3.19.0-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:8488c2276f14f294e890cc1260ab342a13e90cd20dcc03319d2eea258f1fd321"},
+    {file = "protobuf-3.19.0-cp37-cp37m-manylinux2014_aarch64.whl", hash = "sha256:36bf292f44966c67080e535321501717f4f1eba30faef8f2cd4b0c745a027211"},
+    {file = "protobuf-3.19.0-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:c99af73ae34c93e0e2ace57ea2e70243f34fc015c8c23fd39ee93652e726f7e7"},
+    {file = "protobuf-3.19.0-cp37-cp37m-win32.whl", hash = "sha256:f7a031cf8e2fc14acc0ba694f6dff0a01e06b70d817eba6edc72ee6cc20517ac"},
+    {file = "protobuf-3.19.0-cp37-cp37m-win_amd64.whl", hash = "sha256:d4ca5f0c7bc8d2e6966ca3bbd85e9ebe7191b6e21f067896d4af6b28ecff29fe"},
+    {file = "protobuf-3.19.0-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:9a8a880593015ef2c83f7af797fa4fbf583b2c98b4bd94e46c5b61fee319d84b"},
+    {file = "protobuf-3.19.0-cp38-cp38-manylinux2014_aarch64.whl", hash = "sha256:6f16925f5c977dd7787973a50c242e60c22b1d1182aba6bec7bd02862579c10f"},
+    {file = "protobuf-3.19.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:f9097327d277b0aa4a3224e61cd6850aef3269172397715299bcffc9f90293c9"},
+    {file = "protobuf-3.19.0-cp38-cp38-win32.whl", hash = "sha256:708d04394a63ee9bdc797938b6e15ed5bf24a1cb37743eb3886fd74a5a67a234"},
+    {file = "protobuf-3.19.0-cp38-cp38-win_amd64.whl", hash = "sha256:ee4d07d596357f51316b6ecf1cc1927660e9d5e418385bb1c51fd2496cd9bee7"},
+    {file = "protobuf-3.19.0-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:34a77b8fafdeb8f89fee2b7108ae60d8958d72e33478680cc1e05517892ecc46"},
+    {file = "protobuf-3.19.0-cp39-cp39-manylinux2014_aarch64.whl", hash = "sha256:4f93e0f6af796ddd1502225ff8ea25340ced186ca05b601c44d5c88b45ba80a0"},
+    {file = "protobuf-3.19.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:942dd6bc8bd2a3c6a156d8ab0f80bd45313f22b78e1176283270054dcc8ca4c2"},
+    {file = "protobuf-3.19.0-cp39-cp39-win32.whl", hash = "sha256:7b3867795708ac88fde8d6f34f0d9a50af56087e41f624bdb2e9ff808ea5dda7"},
+    {file = "protobuf-3.19.0-cp39-cp39-win_amd64.whl", hash = "sha256:a74432e9d28a6072a2359a0f49f81eb14dd718e7dbbfb6c0789b456c49e1f130"},
+    {file = "protobuf-3.19.0-py2.py3-none-any.whl", hash = "sha256:c96e94d3e523a82caa3e5f74b35dd1c4884199358d01c950d95c341255ff48bc"},
+    {file = "protobuf-3.19.0.tar.gz", hash = "sha256:6a1dc6584d24ef86f5b104bcad64fa0fe06ed36e5687f426e0445d363a041d18"},
 ]
 ptyprocess = [
     {file = "ptyprocess-0.7.0-py2.py3-none-any.whl", hash = "sha256:4b41f3967fce3af57cc7e94b888626c18bf37a083e3651ca8feeb66d492fef35"},
