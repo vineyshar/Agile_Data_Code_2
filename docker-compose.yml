@@ -41,17 +41,23 @@ services:
         image: elasticsearch:7.14.2
         restart: on-failure
         environment:
+            cluster.name: "es-docker"
             discovery.type: single-node
             node.name: "elastic"
         ulimits:
             memlock:
                 soft: -1
                 hard: -1
+            nofile:
+                soft: 65536
+                hard: 65536
+            nproc: 65535
         ports:
             - "9200:9200"
             - "9300:9300"
         volumes:
             - elastic_data:/usr/share/elasticsearch/data
+            - ./logs:/usr/share/elasticsearch/logs
         networks:
             - agile_net
 
@@ -83,9 +89,7 @@ services:
         ports:
             - 8081:8081
         environment:
-            ME_CONFIG_MONGODB_ADMINUSERNAME: root
-            ME_CONFIG_MONGODB_ADMINPASSWORD: agile
-            ME_CONFIG_MONGODB_URL: mongodb://root:agile@mongo:27017/
+            ME_CONFIG_MONGODB_URL: mongodb://mongo:27017/
         networks:
             - agile_net
 
