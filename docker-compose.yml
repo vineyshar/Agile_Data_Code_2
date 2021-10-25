@@ -27,7 +27,6 @@ services:
             - "8888:8888"
         volumes:
             - ./:/home/jovyan
-            - agile_data:/home/jovyan/data
         networks:
             - agile_net
 
@@ -171,7 +170,6 @@ services:
     #         - airflow_net
 
 volumes:
-    agile_data:
     elastic_data:
     mongo_data:
 
