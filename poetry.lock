@@ -59,6 +59,18 @@ tests = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)"
 tests_no_zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "mypy", "pytest-mypy-plugins"]
 
 [[package]]
+name = "avro"
+version = "1.10.2"
+description = "Avro is a serialization and RPC framework."
+category = "main"
+optional = false
+python-versions = ">=2.7"
+
+[package.extras]
+snappy = ["python-snappy"]
+zstandard = ["zstandard"]
+
+[[package]]
 name = "avro-python3"
 version = "1.10.0"
 description = "Avro is a serialization and RPC framework."
@@ -1310,7 +1322,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7,<3.10"
-content-hash = "0f2567ed3d7534cfba9fff919a3206e15d03ad42f82fd857bb1491ad98fcee55"
+content-hash = "f5b2f40e60b5837fc5a06d1aea74ec6c7b73a6f67ff0181aebaaab94e3437ca5"
 
 [metadata.files]
 appnope = [
@@ -1341,6 +1353,9 @@ async-generator = [
 attrs = [
     {file = "attrs-21.2.0-py2.py3-none-any.whl", hash = "sha256:149e90d6d8ac20db7a955ad60cf0e6881a3f20d37096140088356da6c716b0b1"},
     {file = "attrs-21.2.0.tar.gz", hash = "sha256:ef6aaac3ca6cd92904cdd0d83f629a15f18053ec84e6432106f7a4d04ae4f5fb"},
+]
+avro = [
+    {file = "avro-1.10.2.tar.gz", hash = "sha256:381b990cc4c4444743c3297348ffd46e0c3a5d7a17e15b2f4a9042f6e955c31a"},
 ]
 avro-python3 = [
     {file = "avro-python3-1.10.0.tar.gz", hash = "sha256:a455c215540b1fceb1823e2a918e94959b54cb363307c97869aa46b5b55bde05"},
