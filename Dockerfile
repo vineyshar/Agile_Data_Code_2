@@ -19,5 +19,10 @@ RUN apt-get update --yes && \
     echo "mongodb-mongosh hold" | sudo dpkg --set-selections && \
     echo "mongodb-org-tools hold" | sudo dpkg --set-selections
 
-# Instsall requirements.txt
-RUN pip install -r requirements.txt
+RUN pip install poetry
+
+COPY pyproject.toml /home/jovyan/pyproject.toml
+COPY poetry.lock /home/jovyan/poetry.lock
+
+RUN poetry install
+
