@@ -216,7 +216,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
 name = "elasticsearch7"
-version = "7.15.1"
+version = "7.14.2"
 description = "Python client for Elasticsearch"
 category = "main"
 optional = false
@@ -1268,7 +1268,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7,<3.10"
-content-hash = "0b34ceec635926d0ba2cda0184a453268850b29725007e8638733a482c1c0712"
+content-hash = "033329e2c7d482239cccd5f616157f5fd937d41357e81e3d9b68abf3f457bea2"
 
 [metadata.files]
 appnope = [
@@ -1460,8 +1460,8 @@ defusedxml = [
     {file = "defusedxml-0.7.1.tar.gz", hash = "sha256:1bb3032db185915b62d7c6209c5a8792be6a32ab2fedacc84e01b52c51aa3e69"},
 ]
 elasticsearch7 = [
-    {file = "elasticsearch7-7.15.1-py2.py3-none-any.whl", hash = "sha256:e42ff2abb83849d2ea947e2854355fe2470216421171ec84becc7f48f7770f67"},
-    {file = "elasticsearch7-7.15.1.tar.gz", hash = "sha256:07ba6f7e63d8132b6926ec8c73e4de968e57e1a400eb0f4685fb0f3294be1c47"},
+    {file = "elasticsearch7-7.14.2-py2.py3-none-any.whl", hash = "sha256:431a22b332fbfd33a56fc051fad123d15d97048f3823fa7afb12abde7adebc2c"},
+    {file = "elasticsearch7-7.14.2.tar.gz", hash = "sha256:9ceb9c95f171735c22895eda09c406cfd8b0fb150dc65b608691390a5432fd1d"},
 ]
 entrypoints = [
     {file = "entrypoints-0.3-py2.py3-none-any.whl", hash = "sha256:589f874b313739ad35be6e0cd7efde2a4e9b6fea91edcc34e58ecbb8dbe56d19"},
