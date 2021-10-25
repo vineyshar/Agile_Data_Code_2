@@ -38,15 +38,19 @@ services:
             description: Agile Data Science 2.0 Elastic
             name: elastic
         tty: True
-        image: elasticsearch:7.14.2
-        restart: on-failure
+        image: docker.elastic.co/elasticsearch/elasticsearch:7.14.2
+        restart: always
         environment:
             cluster.name: "es-docker"
             discovery.type: single-node
             node.name: "elastic"
+            ES_JAVA_OPTS: "-Xms2048m -Xmx2048m"
         ports:
             - "9200:9200"
-            - "9300:9300"
+        ulimits:
+            memlock:
+                soft: -1
+                hard: -1
         volumes:
             - elastic_data:/usr/share/elasticsearch/data
             - ./logs:/usr/share/elasticsearch/logs
@@ -146,6 +150,6 @@ networks:
         name: agile_net
         driver: bridge
     
-    airflow_net:
-        name: airflow_net
-        driver: bridge
+    # airflow_net:
+    #     name: airflow_net
+    #     driver: bridge
