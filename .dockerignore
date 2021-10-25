@@ -19,3 +19,4 @@ lib
 .mongorc.js
 .cache
 logs
+.wget-hsts

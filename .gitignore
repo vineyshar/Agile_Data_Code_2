@@ -42,3 +42,4 @@ ch05/web/static/images/
 .mongorc.js
 .cache
 logs
+.wget-hsts
