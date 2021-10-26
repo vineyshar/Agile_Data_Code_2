@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
+
 #
 # Script to download data for book
 #
-mkdir data
+
+PROJECT_HOME="/home/jovyan"
 
 #
 # Get airplane data
@@ -10,7 +12,7 @@ mkdir data
 
 # Get on-time records for all flights in 2015 - 273MB
 curl -Lko $PROJECT_HOME/data/On_Time_On_Time_Performance_2015.csv.bz2 \
-    http://s3.amazonaws.com/agile_data_science/On_Time_On_Time_Performance_2015.csv.bz2
+http://s3.amazonaws.com/agile_data_science/On_Time_On_Time_Performance_2015.csv.bz2
 
 # Get openflights data
 curl -Lko /tmp/airports.dat https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat
