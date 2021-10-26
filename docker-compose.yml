@@ -25,6 +25,7 @@ services:
             - mongo-express
         ports:
             - "8888:8888"
+            - "5000:5000"
         volumes:
             - ./:/home/jovyan
         networks:
