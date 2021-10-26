@@ -8,7 +8,7 @@ services:
             description: Agile Data Science 2.0
             name: agile
         tty: true
-        image: jupyter/pyspark-notebook:spark-3.2.0
+        image: rjurney/agile_data_science:latest
         restart: on-failure
         build:
             context: .
