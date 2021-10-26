@@ -1,11 +1,10 @@
-import sys, os, re
+import re
 from flask import Flask, render_template, request
 from pymongo import MongoClient
 from bson import json_util
 import config
-import json
 
-from elasticsearch import Elasticsearch
+from elasticsearch7 import Elasticsearch
 
 elastic = Elasticsearch(config.ELASTIC_URL)
 
@@ -48,7 +47,7 @@ def strip_place(url):
 
 # Set up Flask and Mongo
 app = Flask(__name__)
-client = MongoClient()
+client = MongoClient("mongo")
 
 
 # Controller: Fetch a flight and display it

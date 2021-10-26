@@ -5,7 +5,7 @@ from bson import json_util
 
 # Set up Flask and Mongo
 app = Flask(__name__)
-client = MongoClient()
+client = MongoClient("mongo")
 
 
 # Controller: Fetch an email and display it
