@@ -23,6 +23,7 @@ RUN pip install poetry
 
 COPY pyproject.toml /home/jovyan/pyproject.toml
 COPY poetry.lock /home/jovyan/poetry.lock
+COPY requirements.txt /home/jovyan/requirements.txt
 
-RUN poetry install
+RUN poetry install && pip install -r requirements.txt
 
