@@ -40,7 +40,7 @@ services:
             cluster.name: "es-docker"
             discovery.type: single-node
             node.name: "elastic"
-            ES_JAVA_OPTS: "-Xms2048m -Xmx2048m"
+            ES_JAVA_OPTS: "-Xms1024m -Xmx1024m"
         ports:
             - "9200:9200"
         ulimits:
