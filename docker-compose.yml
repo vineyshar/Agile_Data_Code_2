@@ -10,11 +10,6 @@ services:
         tty: true
         image: rjurney/agile_data_science:latest
         restart: on-failure
-        build:
-            context: .
-            dockerfile: Dockerfile
-            args:
-                buildno: 1
         user: root
         environment:
             JUPYTER_ENABLE_LAB: "yes"
