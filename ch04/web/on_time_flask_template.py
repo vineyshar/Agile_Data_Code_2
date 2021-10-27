@@ -145,6 +145,9 @@ def search_flights():
     results = elastic.search(index="on_time_performance", body=query)
     flights, flight_count = process_search(results)
 
+    if isinstance(flight_count, dict) and "value" in flight_count:
+        flight_count = flight_count["value"]
+
     # Persist search parameters in the form template
     return render_template(
         "search.html",

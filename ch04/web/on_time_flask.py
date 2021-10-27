@@ -20,12 +20,9 @@ def on_time_performance():
         {"Carrier": carrier, "FlightDate": flight_date, "FlightNum": flight_num}
     )
 
+    print(flight)
+
     return json_util.dumps(flight)
-
-
-@app.route("/")
-def hello():
-    return "Hello, World!"
 
 
 if __name__ == "__main__":
