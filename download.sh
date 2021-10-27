@@ -42,8 +42,8 @@ bzip2 -d $PROJECT_HOME/data/simple_flight_delay_features.jsonl.bz2
 mv $PROJECT_HOME/data/simple_flight_delay_features.2.jsonl.bz2 $PROJECT_HOME/data/simple_flight_delay_features.jsonl.bz2
 
 # Download parquet data for examples
-curl -Lko /tmp/on_time_performance.parquet.tgz http://s3.amazonaws.com/agile_data_science/on_time_performance.parquet.tgz
-tar -xvzf /tmp/on_time_performance.parquet.tgz -C $PROJECT_HOME/data/
+# curl -Lko /tmp/on_time_performance.parquet.tgz http://s3.amazonaws.com/agile_data_science/on_time_performance.parquet.tgz
+# tar -xvzf /tmp/on_time_performance.parquet.tgz -C $PROJECT_HOME/data/
 
 # Download january data for examples
 curl -Lko /tmp/january_performance.parquet.tgz http://s3.amazonaws.com/agile_data_science/january_performance.parquet.tgz
