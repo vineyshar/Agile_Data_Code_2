@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block body %}
 <div>
-  <p class="lead">{{flight_count}} Flights</p>
+  <p class="lead">{{flight_count['value']}} Flights</p>
   <form action="/flights/search" method="get">
     <label for="Carrier">Carrier</label>
     <input name="Carrier" maxlength="3" style="width: 36px; margin-right: 10px;"
