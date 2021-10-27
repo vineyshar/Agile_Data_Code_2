@@ -6,6 +6,8 @@
 
 PROJECT_HOME="/home/jovyan"
 
+mkdir data
+
 #
 # Get airplane data
 #
