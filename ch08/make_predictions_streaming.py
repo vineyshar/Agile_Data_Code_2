@@ -174,7 +174,7 @@ def main(base_path):
         def open(self, partition_id, epoch_id):
             print(f"Opened partition id: {partition_id}, epoch: {epoch_id}")
 
-            self.mongo_client = pymongo.MongoClient()
+            self.mongo_client = pymongo.MongoClient("mongo")
             print(f"Opened MongoClient: {self.mongo_client}")
 
             return True
