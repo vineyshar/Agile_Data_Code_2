@@ -188,6 +188,7 @@ def flights_per_airplane(tail_number):
     flights = client.agile_data_science.flights_per_airplane.find_one(
         {"TailNum": tail_number}
     )
+    print(flights)
     return render_template(
         "flights_per_airplane.html", flights=flights, tail_number=tail_number
     )
