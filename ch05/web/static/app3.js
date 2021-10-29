@@ -13,18 +13,18 @@ var chart = d3.select(".chart")
     .attr("height", height);
 
 // We fetch the JSON from our controller, then process the resulting data
-d3.json("/total_flights.json", function (data) {
+d3.json("/top_routes.json", function (data) {
 
     // We define colors for the bars
     var barColor = 'steelblue';
 
     // We compute the maximum value for the bars, then set the domain for the y axis.
     // This means that y will now map from [0 -> maxY] to [height -> 0].
-    var maxY = d3.max(data, function (d) { return d.total_flights; });
+    var maxY = d3.max(data, function (d) { return d.total; });
     y.domain([0, maxY]);
 
     var varColor = function (d, i) {
-        if (d['total_flights'] == maxY) { return modeColor; }
+        if (d['total'] == maxY) { return modeColor; }
         else { return defaultColor; }
     }
 
@@ -36,11 +36,11 @@ d3.json("/total_flights.json", function (data) {
         .append("g")
         .attr("transform", function (d, i) { return "translate(" + i * barWidth + ",0)"; });
 
-    // Now we define a rectangle for each container with the height mapped from the total_flights data point
+    // Now we define a rectangle for each container with the height mapped from the total data point
     // to the y axis, and the width barWidth - 1 pixel. We will it with the bar color.
     bar.append("rect")
-        .attr("y", function (d) { return y(d.total_flights); })
-        .attr("height", function (d) { return height - y(d.total_flights); })
+        .attr("y", function (d) { return y(d.total); })
+        .attr("height", function (d) { return height - y(d.total); })
         .attr("width", barWidth - 1)
         .style("fill", barColor);
 
@@ -49,7 +49,14 @@ d3.json("/total_flights.json", function (data) {
     // to stand out from the blue using the CSS from the HTML template above for text.
     bar.append("text")
         .attr("x", barWidth / 2)
-        .attr("y", function (d) { return y(d.total_flights) + 3; })
+        .attr("y", function (d) { return y(d.total) + 3; })
         .attr("dy", ".75em")
-        .text(function (d) { return d.total_flights; });
+        .text(function (d) { return d.total; });
+
+    // to stand out from the blue using the CSS from the HTML template above for text.
+    bar.append("text")
+        .attr("x", barWidth / 2)
+        .attr("y", function (d) { return y(d.total) + 13; })
+        .attr("dy", ".75em")
+        .text(function (d) { return d.Origin + ' ' + d.Dest; });
 });

@@ -196,6 +196,21 @@ def total_flights_chart():
 
 
 # Controller: Fetch a flight chart
+@app.route("/top_routes_chart")
+def top_routes_chart():
+    return render_template("top_routes_chart.html")
+
+
+# Controller: Fetch a top routes chart's data
+@app.route("/top_routes.json")
+def top_routes_json():
+    top_routes = client.agile_data_science.top_routes.find(
+        {}, sort=[("Year", 1), ("Month", 1)]
+    )
+    return json_util.dumps(top_routes, ensure_ascii=False)
+
+
+# Controller: Fetch a flight chart
 @app.route("/flight_delay_weekly.json")
 def flight_delay_weekly_json():
     weekly_delay = client.agile_data_science.flights_delay_weekly.find(
