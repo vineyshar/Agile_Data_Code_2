@@ -299,7 +299,7 @@ def delays():
 
 
 # Load our regression model
-from sklearn.externals import joblib
+import joblib
 
 project_home = os.environ["PROJECT_HOME"]
 # vectorizer = joblib.load("{}/models/sklearn_vectorizer.pkl".format(project_home))
