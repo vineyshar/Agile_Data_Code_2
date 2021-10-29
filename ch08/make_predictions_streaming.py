@@ -30,6 +30,9 @@ def main(base_path):
 
     spark = (
         SparkSession.builder.config("spark.default.parallelism", 1)
+        .config(
+            "spark.jars.packages", "org.apache.spark:spark-sql-kafka-0-10_2.12:3.2.0"
+        )
         .appName(APP_NAME)
         .getOrCreate()
     )
@@ -100,6 +103,7 @@ def main(base_path):
         spark.readStream.format("kafka")
         .option("kafka.bootstrap.servers", BROKERS)
         .option("subscribe", PREDICTION_TOPIC)
+        .option("startingOffsets", "earliest")
         .load()
     )
 
@@ -201,4 +205,4 @@ def main(base_path):
 
 
 if __name__ == "__main__":
-    main(".")
+    main("/home/jovyan")
