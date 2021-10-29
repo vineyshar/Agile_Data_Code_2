@@ -217,11 +217,15 @@ def airport(airport_code):
     carriers_per_airport = client.agile_data_science.carriers_per_airport.find_one(
         {"Airport": airport_code}
     )
-    print(carriers_per_airport)
+    airport_metadata = client.agile_data_science.airport_metadata.find_one(
+        {"AirportCode": airport_code}
+    )
+
     return render_template(
         "airport.html",
         airport_code=airport_code,
         carriers_per_airport=carriers_per_airport,
+        airport_metadata=airport_metadata,
     )
 
 
