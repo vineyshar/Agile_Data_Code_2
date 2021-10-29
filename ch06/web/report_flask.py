@@ -199,8 +199,28 @@ def airline(carrier_code):
     airline_airplanes = client.agile_data_science.airplanes_per_carrier.find_one(
         {"Carrier": carrier_code}
     )
+    airline_airports = client.agile_data_science.airports_per_carrier.find_one(
+        {"Carrier": carrier_code}
+    )
     return render_template(
-        "airlines.html", airline_airplanes=airline_airplanes, carrier_code=carrier_code
+        "airlines.html",
+        airline_airplanes=airline_airplanes,
+        carrier_code=carrier_code,
+        airline_airports=airline_airports,
+    )
+
+
+# Controller: Fetch an airplane entity page
+@app.route("/airport/<airport_code>")
+def airport(airport_code):
+    carriers_per_airport = client.agile_data_science.carriers_per_airport.find_one(
+        {"Airport": airport_code}
+    )
+    print(carriers_per_airport)
+    return render_template(
+        "airport.html",
+        airport_code=airport_code,
+        carriers_per_airport=carriers_per_airport,
     )
 
 
@@ -213,10 +233,14 @@ def airline2(carrier_code):
     airline_airplanes = client.agile_data_science.airplanes_per_carrier.find_one(
         {"Carrier": carrier_code}
     )
+    airline_airports = client.agile_data_science.airports_per_carrier.find_one(
+        {"Carrier": carrier_code}
+    )
     return render_template(
         "airlines2.html",
         airline_summary=airline_summary,
         airline_airplanes=airline_airplanes,
+        airline_airports=airline_airports,
         carrier_code=carrier_code,
     )
 
